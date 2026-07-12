@@ -5,444 +5,460 @@ import {
   FaGithub,
   FaLinkedin,
   FaEnvelope,
-  FaPhone,
-  FaCode,
-  FaProjectDiagram
+  FaPhone
 } from "react-icons/fa";
 
-import Footer from "../components/Footer";
+import dev1 from "../assets/dev1.jpg";
+import dev2 from "../assets/dev2.jpg";
 
 
-export default function Desenvolvidor() {
+function Desenvolvedores() {
 
-  const desenvolvedores = [
-    {
-      nome: "Augusto Firmino",
-      instituicao: "ISPEKA",
-      funcao: "Full Stack Developer",
 
-      biografia:
-        "Desenvolvedor focado na criação de aplicações web modernas, sistemas de streaming, plataformas digitais e soluções utilizando tecnologias atuais como React.js, Node.js e bases de dados.",
+const desenvolvedores = [
 
-      tecnologias: [
-        "React.js",
-        "Node.js",
-        "MySQL",
-        "Socket.io",
-        "Tailwind CSS"
-      ],
+{
+id:1,
+nome:"Augusto Firmino",
+foto:dev1,
+instituicao:"Instituto Superior Politécnico",
+funcao:"Full Stack Developer",
 
-      projetos: [
-        "RCTV Stream - Plataforma de transmissão online em direto",
-        "Sistema de gestão de conteúdos digitais",
-        "Aplicações web responsivas"
-      ],
+biografia:
+"Desenvolvedor apaixonado por tecnologia, especializado na criação de aplicações web modernas, sistemas administrativos e plataformas digitais. Atua no desenvolvimento frontend e backend utilizando tecnologias atuais.",
 
-      contactos: {
-        email: "augusto@email.com",
-        telefone: "+244 900 000 000",
-        github: "#",
-        linkedin: "#"
-      }
 
-    },
+projetos:[
+"RCTV Stream - Plataforma de transmissão online",
+"Sistema de Gestão de Directores",
+"Tradutor Português - Kimbundu",
+"Aplicações Web Empresariais"
+],
 
+tecnologias:[
+"React.js",
+"Node.js",
+"MySQL",
+"Tailwind CSS",
+"Socket.io",
+"Cloudinary"
+],
 
-    {
-      nome: "Segundo Desenvolvedor",
-      instituicao: "Instituição de Tecnologia",
+email:"augusto@email.com",
+telefone:"+244 900 000 000"
 
-      funcao:
-        "Frontend Developer",
+},
 
-      biografia:
-        "Especialista no desenvolvimento de interfaces modernas, experiências digitais e criação de componentes reutilizáveis com foco em desempenho e usabilidade.",
 
 
-      tecnologias: [
-        "React.js",
-        "JavaScript",
-        "HTML5",
-        "CSS3",
-        "UI Design"
-      ],
+{
+id:2,
+nome:"Carlos Manuel",
+foto:dev2,
+instituicao:"Universidade de Tecnologia",
+funcao:"Software Developer",
 
+biografia:
+"Desenvolvedor focado em soluções digitais, criação de interfaces intuitivas e sistemas escaláveis. Tem experiência em desenvolvimento web e integração de APIs.",
 
-      projetos: [
-        "Interfaces para plataformas digitais",
-        "Sistemas administrativos",
-        "Sites institucionais modernos"
-      ],
 
+projetos:[
+"Sistema de Gestão Escolar",
+"Aplicativo Mobile",
+"Dashboard Administrativo",
+"Portal Institucional"
+],
 
-      contactos: {
-        email: "desenvolvedor@email.com",
-        telefone: "+244 900 000 001",
-        github: "#",
-        linkedin: "#"
-      }
 
-    }
+tecnologias:[
+"JavaScript",
+"React",
+"Express",
+"MongoDB",
+"Git",
+"Figma"
+],
 
-  ];
 
-
-  return (
-
-    <div className="min-h-screen bg-gray-950 text-white">
-
-
-      {/* Cabeçalho */}
-
-      <header
-        className="
-        flex
-        items-center
-        gap-5
-        p-6
-        bg-gray-900
-        "
-      >
-
-        <Link
-          to="/"
-          className="
-          w-11
-          h-11
-          rounded-full
-          bg-red-700
-          flex
-          items-center
-          justify-center
-          hover:bg-red-600
-          transition
-          "
-        >
-
-          <FaArrowLeft />
-
-        </Link>
-
-
-        <div>
-
-          <h1
-            className="
-            text-3xl
-            font-bold
-            "
-          >
-            Desenvolvedores
-          </h1>
-
-          <p className="text-gray-400">
-            Conheça a equipa responsável pelos projetos
-          </p>
-
-        </div>
-
-
-      </header>
-
-
-
-      {/* Desenvolvedores */}
-
-      <main
-        className="
-        max-w-6xl
-        mx-auto
-        px-6
-        py-12
-        space-y-12
-        "
-      >
-
-
-        {
-          desenvolvedores.map((dev,index)=>(
-
-
-            <section
-              key={index}
-              className="
-              bg-gray-900
-              rounded-3xl
-              p-8
-              shadow-xl
-              "
-            >
-
-
-              {/* Perfil */}
-
-              <div
-                className="
-                flex
-                flex-col
-                md:flex-row
-                gap-8
-                items-center
-                "
-              >
-
-
-                <div
-                  className="
-                  w-32
-                  h-32
-                  rounded-full
-                  bg-red-700
-                  flex
-                  items-center
-                  justify-center
-                  text-5xl
-                  "
-                >
-
-                  <FaCode />
-
-                </div>
-
-
-
-                <div>
-
-
-                  <h2
-                    className="
-                    text-3xl
-                    font-bold
-                    "
-                  >
-                    {dev.nome}
-                  </h2>
-
-
-                  <p className="text-red-500 mt-2">
-                    {dev.funcao}
-                  </p>
-
-
-                  <p className="text-gray-400">
-                    {dev.instituicao}
-                  </p>
-
-
-                </div>
-
-
-              </div>
-
-
-
-
-              {/* Biografia */}
-
-              <div className="mt-8">
-
-
-                <h3 className="
-                text-xl
-                font-bold
-                flex
-                items-center
-                gap-2
-                ">
-
-                  <FaCode/>
-                  Biografia
-
-                </h3>
-
-
-                <p
-                  className="
-                  text-gray-300
-                  mt-3
-                  leading-relaxed
-                  "
-                >
-
-                  {dev.biografia}
-
-                </p>
-
-
-              </div>
-
-
-
-
-              {/* Tecnologias */}
-
-              <div className="mt-8">
-
-
-                <h3 className="
-                text-xl
-                font-bold
-                ">
-
-                  Tecnologias
-
-                </h3>
-
-
-                <div
-                  className="
-                  flex
-                  flex-wrap
-                  gap-3
-                  mt-4
-                  "
-                >
-
-                  {
-                    dev.tecnologias.map((tec)=>(
-
-                      <span
-                        key={tec}
-                        className="
-                        bg-red-700
-                        px-4
-                        py-2
-                        rounded-full
-                        "
-                      >
-
-                        {tec}
-
-                      </span>
-
-                    ))
-                  }
-
-                </div>
-
-
-              </div>
-
-
-
-
-              {/* Projetos */}
-
-              <div className="mt-8">
-
-
-                <h3
-                  className="
-                  text-xl
-                  font-bold
-                  flex
-                  gap-2
-                  items-center
-                  "
-                >
-
-                  <FaProjectDiagram/>
-
-                  Projetos realizados
-
-                </h3>
-
-
-                <ul
-                  className="
-                  mt-4
-                  space-y-3
-                  text-gray-300
-                  "
-                >
-
-                  {
-                    dev.projetos.map((proj)=>(
-
-                      <li key={proj}>
-                        • {proj}
-                      </li>
-
-                    ))
-                  }
-
-                </ul>
-
-
-              </div>
-
-
-
-
-              {/* Contactos */}
-
-              <div className="mt-8">
-
-
-                <h3 className="text-xl font-bold">
-
-                  Contactos para projetos
-
-                </h3>
-
-
-                <div
-                  className="
-                  mt-4
-                  grid
-                  md:grid-cols-2
-                  gap-4
-                  "
-                >
-
-
-                  <p>
-                    <FaEnvelope className="inline mr-2 text-red-500"/>
-                    {dev.contactos.email}
-                  </p>
-
-
-                  <p>
-                    <FaPhone className="inline mr-2 text-red-500"/>
-                    {dev.contactos.telefone}
-                  </p>
-
-
-                  <a href={dev.contactos.github}>
-                    <FaGithub className="inline mr-2 text-red-500"/>
-                    GitHub
-                  </a>
-
-
-                  <a href={dev.contactos.linkedin}>
-                    <FaLinkedin className="inline mr-2 text-red-500"/>
-                    LinkedIn
-                  </a>
-
-
-                </div>
-
-
-              </div>
-
-
-
-            </section>
-
-
-          ))
-        }
-
-
-      </main>
-
-
-
-      <Footer/>
-
-
-    </div>
-
-  );
+email:"carlos@email.com",
+telefone:"+244 911 111 111"
 
 }
+
+];
+
+
+
+return (
+
+<div className="
+min-h-screen
+bg-gray-950
+text-white
+py-10
+px-5
+">
+
+
+<div className="max-w-6xl mx-auto">
+
+
+{/* voltar */}
+
+<Link
+to="/"
+className="
+flex
+items-center
+gap-2
+mb-8
+text-red-400
+hover:text-red-300
+transition
+"
+>
+
+<FaArrowLeft/>
+
+Voltar
+
+</Link>
+
+
+
+<h1 className="
+text-4xl
+font-bold
+text-center
+mb-12
+">
+
+Desenvolvedores
+
+</h1>
+
+
+
+
+<div className="
+grid
+md:grid-cols-2
+gap-10
+">
+
+
+{
+desenvolvedores.map((dev)=>(
+
+
+<div
+key={dev.id}
+className="
+bg-gray-900
+rounded-2xl
+shadow-xl
+p-6
+border
+border-gray-800
+hover:border-red-500
+transition
+"
+>
+
+
+
+<div className="
+flex
+flex-col
+items-center
+">
+
+
+<img
+
+src={dev.foto}
+
+className="
+w-36
+h-36
+rounded-full
+object-cover
+border-4
+border-red-600
+"
+/>
+
+
+
+<h2 className="
+text-2xl
+font-bold
+mt-5
+">
+
+{dev.nome}
+
+</h2>
+
+
+<p className="text-red-400">
+
+{dev.funcao}
+
+</p>
+
+
+
+<p className="
+text-gray-400
+text-sm
+mt-1
+">
+
+{dev.instituicao}
+
+</p>
+
+
+
+</div>
+
+
+
+
+<div className="mt-6">
+
+
+<h3 className="font-bold text-xl mb-2">
+
+Biografia
+
+</h3>
+
+
+<p className="text-gray-300 leading-relaxed">
+
+{dev.biografia}
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div className="mt-6">
+
+
+<h3 className="font-bold text-xl mb-3">
+
+Projetos Realizados
+
+</h3>
+
+
+<ul className="
+list-disc
+ml-5
+text-gray-300
+space-y-2
+">
+
+
+{
+dev.projetos.map((p,index)=>(
+
+<li key={index}>
+{p}
+</li>
+
+))
+}
+
+
+</ul>
+
+
+</div>
+
+
+
+
+
+
+<div className="mt-6">
+
+
+<h3 className="font-bold text-xl mb-3">
+
+Tecnologias
+
+</h3>
+
+
+
+<div className="
+flex
+flex-wrap
+gap-2
+">
+
+
+{
+dev.tecnologias.map((tec,index)=>(
+
+<span
+key={index}
+className="
+bg-red-600/20
+border
+border-red-500
+px-3
+py-1
+rounded-full
+text-sm
+"
+>
+
+{tec}
+
+</span>
+
+
+))
+}
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div className="
+mt-8
+border-t
+border-gray-700
+pt-5
+">
+
+
+<h3 className="
+font-bold
+text-xl
+mb-4
+">
+
+Contactos para Projetos
+
+</h3>
+
+
+
+<div className="space-y-3 text-gray-300">
+
+
+<p className="
+flex
+items-center
+gap-3
+">
+
+<FaEnvelope className="text-red-500"/>
+
+{dev.email}
+
+</p>
+
+
+<p className="
+flex
+items-center
+gap-3
+">
+
+<FaPhone className="text-red-500"/>
+
+{dev.telefone}
+
+</p>
+
+
+</div>
+
+
+
+
+<div className="
+flex
+gap-5
+mt-5
+">
+
+
+<a
+href="#"
+className="
+text-2xl
+hover:text-red-500
+"
+>
+
+<FaGithub/>
+
+</a>
+
+
+<a
+href="#"
+className="
+text-2xl
+hover:text-red-500
+"
+>
+
+<FaLinkedin/>
+
+</a>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+))
+
+}
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+)
+
+
+}
+
+
+export default Desenvolvedores;
