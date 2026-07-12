@@ -47,6 +47,7 @@ export default function Stream() {
 
 
 
+
   // INTERNET
 
   useEffect(()=>{
@@ -55,7 +56,6 @@ export default function Stream() {
     const onlineHandler=()=>{
 
       setOnline(true);
-
       setLoading(true);
 
     };
@@ -68,31 +68,89 @@ export default function Stream() {
     };
 
 
-    window.addEventListener(
-      "online",
-      onlineHandler
+    window.addEventListener("online",onlineHandler);
+
+    window.addEventListener("offline",offlineHandler);
+
+
+
+    return()=>{
+
+      window.removeEventListener("online",onlineHandler);
+
+      window.removeEventListener("offline",offlineHandler);
+
+    };
+
+
+  },[]);
+
+
+
+
+
+
+
+
+  // SOCKET
+
+  useEffect(()=>{
+
+
+    const receberEspectadores=(dados)=>{
+
+      setEspectadores(dados);
+
+    };
+
+
+    socket.on(
+      "espectadores",
+      receberEspectadores
     );
 
 
-    window.addEventListener(
-      "offline",
-      offlineHandler
-    );
+
+    const entrar=()=>{
+
+
+      socket.emit(
+        "entrarCanal",
+        canais[0].nome
+      );
+
+
+    };
+
+
+
+    if(socket.connected){
+
+      entrar();
+
+    }else{
+
+      socket.on(
+        "connect",
+        entrar
+      );
+
+    }
 
 
 
     return()=>{
 
 
-      window.removeEventListener(
-        "online",
-        onlineHandler
+      socket.off(
+        "espectadores",
+        receberEspectadores
       );
 
 
-      window.removeEventListener(
-        "offline",
-        offlineHandler
+      socket.off(
+        "connect",
+        entrar
       );
 
 
@@ -108,95 +166,12 @@ export default function Stream() {
 
 
 
-  // SOCKET.IO
-
-  useEffect(()=>{
-
-
-    const receberEspectadores = (dados)=>{
-
-        console.log(
-            "Contagem:",
-            dados
-        );
-
-        setEspectadores(dados);
-
-    };
-
-
-    socket.on(
-        "espectadores",
-        receberEspectadores
-    );
-
-
-    const entrar = ()=>{
-
-        console.log(
-            "Socket conectado:",
-            socket.id
-        );
-
-
-        socket.emit(
-            "entrarCanal",
-            canais[0].nome
-        );
-
-    };
-
-
-    if(socket.connected){
-
-        entrar();
-
-    }else{
-
-        socket.on(
-            "connect",
-            entrar
-        );
-
-    }
-
-
-
-    return()=>{
-
-
-        socket.off(
-            "espectadores",
-            receberEspectadores
-        );
-
-
-        socket.off(
-            "connect",
-            entrar
-        );
-
-
-    };
-
-
-},[]);
-
-
-
-
-
-
-  // TROCAR CANAL
-
   const trocarCanal=(canal)=>{
 
 
     setLoading(true);
 
-
     setCanalAtual(canal);
-
 
 
     socket.emit(
@@ -214,11 +189,17 @@ export default function Stream() {
 
 
 
+
   return (
+
 
     <div
     className="
     w-full
+    max-w-7xl
+    mx-auto
+    px-3
+    sm:px-5
     flex
     flex-col
     items-center
@@ -231,89 +212,87 @@ export default function Stream() {
 
 
 
-      {/* MENU CANAIS */}
 
+      {/* MENU */}
 
       <div
       className="
-      w-[970px]
-      mb-6
+      w-full
       flex
       flex-wrap
       justify-center
-      gap-3
+      gap-2
+      mb-5
       "
       >
 
 
       {
-
-      canais.map((canal,index)=>(
-
-
-        <button
-     
-        key={index}
-
-        onClick={()=>trocarCanal(canal)}
-
-        className={`
-        
-        px-5
-        py-3
-        rounded-lg
-        font-semibold
-        transition
-        
-        ${
-          canalAtual.nome===canal.nome
-
-          ?
-
-          "bg-red-700 text-white shadow-lg"
-
-          :
-
-          "bg-gray-200 text-gray-800 hover:bg-red-100"
-
-        }
-
-        `}
-
-        >
+        canais.map((canal,index)=>(
 
 
+          <button
 
-        <div>
+          key={index}
+
+          onClick={()=>trocarCanal(canal)}
+
+          className={`
+
+          flex-1
+          min-w-[140px]
+          sm:flex-none
+
+          px-4
+          py-3
+
+          rounded-xl
+
+          font-semibold
+
+          text-sm
+          sm:text-base
+
+          transition
+
+          ${
+            canalAtual.nome===canal.nome
+
+            ?
+
+            "bg-red-700 text-white shadow-lg"
+
+            :
+
+            "bg-gray-200 text-gray-800 hover:bg-red-100"
+
+          }
+
+          `}
+
+          >
 
 
-        <p>
-        {canal.nome}
-        </p>
+          <p>
+          {canal.nome}
+          </p>
 
 
-        <span
-        className="
-        text-xs
-        "
-        >
+          <span
+          className="
+          text-xs
+          "
+          >
 
-        👁 {espectadores[canal.nome] || 0} assistindo
+          👁 {espectadores[canal.nome] || 0}
 
-
-        </span>
-
+          </span>
 
 
-        </div>
+          </button>
 
 
-
-        </button>
-
-
-      ))
-
+        ))
       }
 
 
@@ -327,23 +306,27 @@ export default function Stream() {
 
 
 
-      {/* TITULO DO CANAL */}
+      {/* CABEÇALHO */}
 
 
       <div
       className="
-      w-[970px]
-      mb-3
+      w-full
       flex
+      flex-col
+      sm:flex-row
       justify-between
       items-center
+      gap-3
+      mb-3
       "
       >
 
 
       <h2
       className="
-      text-2xl
+      text-xl
+      sm:text-2xl
       font-bold
       "
       >
@@ -354,6 +337,8 @@ export default function Stream() {
 
 
 
+
+
       <div
       className="
       bg-red-700
@@ -361,6 +346,8 @@ export default function Stream() {
       px-5
       py-2
       rounded-full
+      text-sm
+      sm:text-base
       "
       >
 
@@ -372,6 +359,7 @@ export default function Stream() {
       </div>
 
 
+
       </div>
 
 
@@ -382,18 +370,19 @@ export default function Stream() {
 
 
 
-      {/* PLAYER */}
+      {/* PLAYER RESPONSIVO */}
 
 
       <div
 
       className="
       relative
-      w-[970px]
-      h-[610px]
+      w-full
+      aspect-video
       bg-black
+      rounded-xl
       overflow-hidden
-      rounded-lg
+      shadow-xl
       "
 
       >
@@ -406,8 +395,8 @@ export default function Stream() {
 
       {!online && (
 
-        <div
 
+        <div
         className="
         absolute
         inset-0
@@ -418,20 +407,23 @@ export default function Stream() {
         bg-black
         text-white
         z-20
+        text-center
+        px-5
         "
-
         >
 
-        <div className="text-7xl">
+
+        <div className="text-6xl">
         📡
         </div>
 
 
         <h2
         className="
-        text-3xl
+        text-xl
+        sm:text-3xl
         font-bold
-        mt-6
+        mt-5
         "
         >
 
@@ -441,6 +433,7 @@ export default function Stream() {
 
 
         </div>
+
 
       )}
 
@@ -474,25 +467,25 @@ export default function Stream() {
 
 
         <div
-
         className="
-        w-16
-        h-16
+        w-14
+        h-14
         border-4
         border-red-600
         border-t-transparent
         rounded-full
         animate-spin
         "
-
         />
+
 
 
         <h2
         className="
-        text-3xl
+        text-xl
+        sm:text-3xl
         font-bold
-        mt-8
+        mt-6
         "
         >
 
@@ -514,38 +507,46 @@ export default function Stream() {
 
 
 
-
       <iframe
-       id="transmissao"
+
+      id="transmissao"
+
       key={canalAtual.url}
 
       src={canalAtual.url}
 
       title={canalAtual.nome}
 
-      width="970"
 
-      height="610"
+      className="
+      w-full
+      h-full
+      "
 
       scrolling="no"
 
+
       allow="
-    autoplay;
-    fullscreen;
-    encrypted-media;
-    picture-in-picture
-  "
+      autoplay;
+      fullscreen;
+      encrypted-media;
+      picture-in-picture
+      "
+
 
       allowFullScreen
 
+
       onLoad={()=>setLoading(false)}
 
+
       style={{
-        border:"none",
-        display:"block"
+        border:"none"
       }}
 
+
       />
+
 
 
 
@@ -553,7 +554,10 @@ export default function Stream() {
       </div>
 
 
+
+
     </div>
+
 
   );
 
