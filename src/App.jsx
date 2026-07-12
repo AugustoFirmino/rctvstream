@@ -12,7 +12,7 @@ function App() {
 
         <Route path="/" element={<Home />} />
 
-        <Route path="rctvstream/devs" element={<Desenvolvidor />} />
+        <Route path="rctvstream/founder" element={<Desenvolvidor />} />
 
 
        
