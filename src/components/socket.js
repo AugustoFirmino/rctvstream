@@ -2,7 +2,7 @@ import { io } from "socket.io-client";
 
 
 const socket = io(
-  "http://10.201.100.248:3001",
+  "https://navigation-corpus-thomson-quiet.trycloudflare.com",
   {
     transports:["websocket"]
   }
