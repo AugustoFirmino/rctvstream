@@ -162,12 +162,12 @@ app.get("/",(req,res)=>{
 
 
 
-server.listen(3001,()=>{
+const PORT = 3001;
 
+server.listen(PORT, "0.0.0.0", () => {
 
     console.log(
-        "🚀 Servidor rodando http://localhost:3001"
+        ` Servidor rodando na porta ${PORT}`
     );
-
 
 });
