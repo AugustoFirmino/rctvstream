@@ -425,8 +425,9 @@ transition
 "
 
 >
+  <Link to="/Devs">
 Conheça o Desenvolvedor da RCTV Stream
-
+</Link>
 <FaArrowRight/>
 
 </button>

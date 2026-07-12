@@ -12,8 +12,7 @@ function App() {
 
         <Route path="/" element={<Home />} />
 
-       
-       
+        <Route path="/Devs" element={<Desenvolvidor />} />
 
       </Routes>
 
