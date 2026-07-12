@@ -6,7 +6,11 @@ import {
   FaGithub,
   FaLinkedin,
   FaEnvelope,
-  FaPhone
+  FaPhone,
+  FaCode,
+  FaLaptopCode,
+  FaRobot,
+  FaBullhorn
 } from "react-icons/fa";
 
 
@@ -14,14 +18,10 @@ import dev1 from "../assets/devs1.jpeg";
 
 
 
-
 function Desenvolvedores() {
 
 
-const desenvolvedores = [
-
-{
-id:1,
+const desenvolvedor = {
 
 nome:"Augusto Firmino Correia",
 
@@ -32,34 +32,29 @@ instituicao:"Universidade ISPEKA",
 funcao:"Programador Full Stack | Técnico de Informática",
 
 
+
 biografia:`
 
-Augusto Firmino Correia é Programador Full Stack e Técnico de Informática, 
-com formação na Universidade ISPEKA, dedicado ao desenvolvimento de soluções 
+Augusto Firmino Correia é Programador Full Stack e Técnico de Informática,
+com formação na Universidade ISPEKA, dedicado ao desenvolvimento de soluções
 tecnológicas modernas, inovadoras e eficientes.
 
-Atua na criação de aplicações web completas, sistemas digitais, plataformas 
-online e soluções personalizadas, combinando conhecimentos de programação, 
-infraestrutura informática e ferramentas tecnológicas.
+Atua na criação de aplicações web completas, sistemas digitais, plataformas
+online e soluções personalizadas, combinando programação, infraestrutura
+informática e ferramentas tecnológicas.
 
-Possui competências em React.js para desenvolvimento de interfaces modernas 
-e responsivas, Node.js para criação de APIs e serviços backend, MySQL para 
-gestão de bases de dados, Tailwind CSS para construção de layouts profissionais 
-e integração de Inteligência Artificial (IA) em projetos digitais.
+Possui experiência no desenvolvimento frontend com React.js, backend com
+Node.js, criação de APIs, gestão de bases de dados MySQL e desenvolvimento
+de interfaces profissionais utilizando Tailwind CSS.
 
-Como Técnico de Informática, possui conhecimentos em manutenção de computadores,
-instalação e configuração de sistemas, suporte técnico, resolução de problemas
-de hardware e software, redes informáticas e ferramentas tecnológicas.
+Também possui conhecimentos na integração de Inteligência Artificial (IA),
+Marketing Digital, Excel Avançado e Informática na Óptica do Utilizador.
 
-Complementa sua formação com conhecimentos em Marketing Digital, Excel Avançado 
-e Informática na Óptica do Utilizador, aplicando tecnologia, análise de dados 
-e estratégias digitais para melhorar processos e criar soluções de valor.
-
-Com uma visão multidisciplinar entre desenvolvimento de software, suporte 
-informático, inteligência artificial e comunicação digital, procura transformar 
-ideias em soluções tecnológicas funcionais, seguras e inovadoras.
+Como profissional de tecnologia, procura transformar ideias em soluções
+digitais funcionais, seguras e preparadas para os desafios do mundo moderno.
 
 `,
+
 
 
 projetos:[
@@ -70,9 +65,12 @@ projetos:[
 
 "Tradutor Português - Kimbundu",
 
-"Aplicações Web Empresariais"
+"Sistemas Web Empresariais",
+
+"Aplicações digitais personalizadas"
 
 ],
+
 
 
 tecnologias:[
@@ -85,6 +83,8 @@ tecnologias:[
 
 "Tailwind CSS",
 
+"JavaScript",
+
 "Socket.io",
 
 "Cloudinary",
@@ -96,46 +96,52 @@ tecnologias:[
 ],
 
 
+
 email:"augusto@email.com",
 
 telefone:"+244 900 000 000"
 
-},
 
+};
 
-
-
-];
 
 
 
 
 return (
 
+
 <div className="
 min-h-screen
-bg-gray-950
-text-white
+bg-white
+text-gray-900
 py-10
 px-5
 ">
 
 
-<div className="max-w-6xl mx-auto">
+
+<div className="
+max-w-5xl
+mx-auto
+">
 
 
+
+{/* VOLTAR */}
 
 <Link
 
 to="/"
 
 className="
-flex
+inline-flex
 items-center
-gap-2
-mb-8
-text-red-400
-hover:text-red-300
+gap-3
+mb-10
+text-red-600
+font-semibold
+hover:text-red-800
 transition
 "
 
@@ -151,231 +157,362 @@ Voltar
 
 
 
-<h1 className="
-text-4xl
-font-bold
-text-center
-mb-12
-">
 
-Desenvolvedores
-
-</h1>
-
-
-
+{/* CABEÇALHO */}
 
 
 <div className="
-grid
-md:grid-cols-2
-gap-10
-">
-
-
-
-{
-
-desenvolvedores.map((dev)=>(
-
-
-<div
-
-key={dev.id}
-
-className="
-bg-gray-900
-rounded-2xl
-shadow-xl
-p-6
-border
-border-gray-800
-hover:border-red-500
-transition
-"
-
->
-
-
-
-<div className="
+bg-gray-50
+rounded-3xl
+shadow-lg
+p-8
 flex
 flex-col
+md:flex-row
 items-center
+gap-8
+border
+border-gray-200
 ">
+
 
 
 <img
 
-src={dev.foto}
+src={desenvolvedor.foto}
 
-alt={dev.nome}
+alt={desenvolvedor.nome}
 
 className="
-w-36
-h-36
+w-52
+h-52
 rounded-full
 object-cover
-border-4
+border-8
 border-red-600
+shadow-xl
 "
 
 />
 
 
 
+
+
+<div>
+
+
+<h1 className="
+text-4xl
+font-bold
+mb-3
+">
+
+{desenvolvedor.nome}
+
+</h1>
+
+
+
+<h2 className="
+text-xl
+text-red-600
+font-semibold
+">
+
+{desenvolvedor.funcao}
+
+</h2>
+
+
+
+<p className="
+text-gray-600
+mt-3
+">
+
+{desenvolvedor.instituicao}
+
+</p>
+
+
+
+<p className="
+mt-5
+text-gray-700
+leading-relaxed
+">
+
+Desenvolvedor focado em criar soluções digitais,
+sistemas web modernos e tecnologias inovadoras.
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+{/* BIOGRAFIA */}
+
+
+<section className="mt-10">
+
+
 <h2 className="
 text-2xl
 font-bold
-mt-5
-text-center
+mb-4
+flex
+items-center
+gap-3
 ">
 
-{dev.nome}
+<FaCode className="text-red-600"/>
+
+Sobre mim
+
+</h2>
+
+
+
+<p className="
+text-gray-700
+leading-relaxed
+whitespace-pre-line
+">
+
+{desenvolvedor.biografia}
+
+</p>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+{/* COMPETENCIAS */}
+
+
+<section className="mt-10">
+
+
+<h2 className="
+text-2xl
+font-bold
+mb-5
+">
+
+Competências
+
+</h2>
+
+
+
+<div className="
+grid
+md:grid-cols-3
+gap-5
+">
+
+
+<div className="
+p-5
+rounded-xl
+bg-gray-100
+">
+
+<FaLaptopCode className="text-red-600 text-3xl mb-3"/>
+
+<h3 className="font-bold">
+
+Desenvolvimento Web
+
+</h3>
+
+<p className="text-gray-600">
+
+React, Node.js, APIs e sistemas completos.
+
+</p>
+
+</div>
+
+
+
+
+<div className="
+p-5
+rounded-xl
+bg-gray-100
+">
+
+<FaRobot className="text-red-600 text-3xl mb-3"/>
+
+<h3 className="font-bold">
+
+Inteligência Artificial
+
+</h3>
+
+<p className="text-gray-600">
+
+Aplicação de IA em soluções digitais.
+
+</p>
+
+</div>
+
+
+
+
+
+<div className="
+p-5
+rounded-xl
+bg-gray-100
+">
+
+<FaBullhorn className="text-red-600 text-3xl mb-3"/>
+
+<h3 className="font-bold">
+
+Marketing Digital
+
+</h3>
+
+<p className="text-gray-600">
+
+Estratégias digitais e presença online.
+
+</p>
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+{/* PROJETOS */}
+
+
+<section className="mt-10">
+
+
+<h2 className="
+text-2xl
+font-bold
+mb-5
+">
+
+Projetos Realizados
+
+</h2>
+
+
+
+<div className="
+grid
+md:grid-cols-2
+gap-4
+">
+
+
+{
+
+desenvolvedor.projetos.map((projeto,index)=>(
+
+
+<div
+
+key={index}
+
+className="
+bg-gray-100
+p-4
+rounded-xl
+border-l-4
+border-red-600
+"
+
+>
+
+{projeto}
+
+</div>
+
+
+))
+
+
+}
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+{/* TECNOLOGIAS */}
+
+
+<section className="mt-10">
+
+
+<h2 className="
+text-2xl
+font-bold
+mb-5
+">
+
+Tecnologias
 
 </h2>
 
 
 
 
-<p className="
-text-red-400
-text-center
-">
-
-{dev.funcao}
-
-</p>
-
-
-
-<p className="
-text-gray-400
-text-sm
-mt-1
-">
-
-{dev.instituicao}
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-<div className="mt-6">
-
-
-<h3 className="
-font-bold
-text-xl
-mb-3
-">
-
-Biografia
-
-</h3>
-
-
-<p className="
-text-gray-300
-leading-relaxed
-whitespace-pre-line
-">
-
-{dev.biografia}
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-<div className="mt-6">
-
-
-<h3 className="
-font-bold
-text-xl
-mb-3
-">
-
-Projetos Realizados
-
-</h3>
-
-
-
-<ul className="
-list-disc
-ml-5
-text-gray-300
-space-y-2
-">
-
-
-{
-
-dev.projetos.map((item,index)=>(
-
-<li key={index}>
-
-{item}
-
-</li>
-
-))
-
-}
-
-
-</ul>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-<div className="mt-6">
-
-
-<h3 className="
-font-bold
-text-xl
-mb-3
-">
-
-Tecnologias
-
-</h3>
-
-
-
 <div className="
 flex
 flex-wrap
-gap-2
+gap-3
 ">
 
 
 {
 
-dev.tecnologias.map((tec,index)=>(
+desenvolvedor.tecnologias.map((tec,index)=>(
 
 
 <span
@@ -383,13 +520,12 @@ dev.tecnologias.map((tec,index)=>(
 key={index}
 
 className="
-bg-red-600/20
-border
-border-red-500
-px-3
-py-1
+px-4
+py-2
 rounded-full
-text-sm
+bg-red-100
+text-red-700
+font-medium
 "
 
 >
@@ -408,7 +544,7 @@ text-sm
 </div>
 
 
-</div>
+</section>
 
 
 
@@ -416,29 +552,35 @@ text-sm
 
 
 
-<div className="
-mt-8
-border-t
-border-gray-700
-pt-5
+
+{/* CONTACTO */}
+
+
+
+<section className="
+mt-10
+bg-gray-900
+text-white
+rounded-2xl
+p-8
 ">
 
 
-<h3 className="
+<h2 className="
+text-2xl
 font-bold
-text-xl
-mb-4
+mb-5
 ">
 
 Contactos para Projetos
 
-</h3>
+</h2>
+
 
 
 
 <div className="
-space-y-3
-text-gray-300
+space-y-4
 ">
 
 
@@ -450,7 +592,7 @@ gap-3
 
 <FaEnvelope className="text-red-500"/>
 
-{dev.email}
+{desenvolvedor.email}
 
 </p>
 
@@ -465,9 +607,10 @@ gap-3
 
 <FaPhone className="text-red-500"/>
 
-{dev.telefone}
+{desenvolvedor.telefone}
 
 </p>
+
 
 
 </div>
@@ -478,66 +621,32 @@ gap-3
 
 <div className="
 flex
-gap-5
-mt-5
+gap-6
+mt-6
+text-3xl
 ">
 
 
-<a
-
-href="#"
-
-className="
-text-2xl
-hover:text-red-500
-"
-
->
+<a href="#">
 
 <FaGithub/>
 
 </a>
 
 
-
-<a
-
-href="#"
-
-className="
-text-2xl
-hover:text-red-500
-"
-
->
+<a href="#">
 
 <FaLinkedin/>
 
 </a>
 
 
-
 </div>
 
 
 
-</div>
+</section>
 
-
-
-
-
-</div>
-
-
-))
-
-
-}
-
-
-
-</div>
 
 
 
@@ -545,6 +654,7 @@ hover:text-red-500
 
 
 </div>
+
 
 
 )
