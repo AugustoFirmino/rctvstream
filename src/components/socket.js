@@ -2,7 +2,7 @@ import { io } from "socket.io-client";
 
 
 const socket = io(
-  "https://seen-necklace-binary-assumption.trycloudflare.com/",
+  "https://https://rctvstream.onrender.com/",
   {
     transports:["websocket"]
   }
