@@ -425,9 +425,8 @@ transition
 "
 
 >
-<Link to="/rctvstream/founder" className="flex items-center gap-3">
 Conheça o Desenvolvedor da RCTV Stream
-</Link>
+
 <FaArrowRight/>
 
 </button>
