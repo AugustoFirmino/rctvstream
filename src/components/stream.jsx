@@ -74,32 +74,17 @@ setOnline(false);
 
 
 
-window.addEventListener(
-"online",
-onlineHandler
-);
+window.addEventListener("online",onlineHandler);
 
-
-window.addEventListener(
-"offline",
-offlineHandler
-);
+window.addEventListener("offline",offlineHandler);
 
 
 
 return()=>{
 
-window.removeEventListener(
-"online",
-onlineHandler
-);
+window.removeEventListener("online",onlineHandler);
 
-
-window.removeEventListener(
-"offline",
-offlineHandler
-);
-
+window.removeEventListener("offline",offlineHandler);
 
 };
 
@@ -146,19 +131,16 @@ canais[0].nome
 
 
 
-
 if(socket.connected){
 
 entrar();
 
 }else{
 
-
 socket.on(
 "connect",
 entrar
 );
-
 
 }
 
@@ -219,8 +201,8 @@ canal.nome
 
 return (
 
-
 <div
+
 className="
 w-full
 max-w-6xl
@@ -231,6 +213,7 @@ flex
 flex-col
 items-center
 "
+
 >
 
 
@@ -238,10 +221,11 @@ items-center
 
 
 
-{/* CANAIS */}
 
+{/* MENU */}
 
 <div
+
 className="
 w-full
 flex
@@ -250,6 +234,7 @@ justify-center
 gap-2
 mb-5
 "
+
 >
 
 
@@ -264,7 +249,6 @@ key={index}
 
 onClick={()=>trocarCanal(canal)}
 
-
 className={`
 
 px-4
@@ -272,7 +256,6 @@ py-2
 rounded-lg
 font-semibold
 text-sm
-transition
 
 
 ${
@@ -285,11 +268,13 @@ canalAtual.nome===canal.nome
 
 :
 
-"bg-gray-200 text-gray-800 hover:bg-red-100"
+"bg-gray-200 text-gray-800"
 
 }
 
-`}
+`
+
+}
 
 
 >
@@ -302,6 +287,7 @@ canalAtual.nome===canal.nome
 
 
 <span
+
 className="
 text-xs
 flex
@@ -309,15 +295,14 @@ justify-center
 items-center
 gap-1
 "
+
 >
 
 <FaEye/>
 
 {espectadores[canal.nome] || 0}
 
-
 </span>
-
 
 
 </button>
@@ -342,7 +327,6 @@ gap-1
 {/* TITULO */}
 
 
-
 <div
 
 className="
@@ -356,22 +340,19 @@ mb-3
 >
 
 
-
 <h2
+
 className="
 text-xl
 sm:text-2xl
 font-bold
 "
->
 
+>
 
 {canalAtual.nome}
 
-
 </h2>
-
-
 
 
 
@@ -385,10 +366,10 @@ text-white
 px-4
 py-2
 rounded-full
-text-sm
 flex
 items-center
 gap-2
+text-sm
 "
 
 >
@@ -416,7 +397,6 @@ AO VIVO
 
 
 
-
 </div>
 
 
@@ -427,7 +407,7 @@ AO VIVO
 
 
 
-{/* PLAYER */}
+{/* PLAYER FULL */}
 
 
 
@@ -448,7 +428,7 @@ overflow-hidden
 shadow-xl
 
 
-h-[210px]
+h-[220px]
 
 sm:h-[400px]
 
@@ -457,8 +437,6 @@ lg:h-[610px]
 "
 
 >
-
-
 
 
 
@@ -476,14 +454,13 @@ lg:h-[610px]
 className="
 absolute
 inset-0
-z-20
+z-30
 bg-black
 text-white
 flex
 flex-col
 justify-center
 items-center
-text-center
 "
 
 >
@@ -499,20 +476,18 @@ mb-5
 />
 
 
-
 <h2
+
 className="
 text-xl
 font-bold
 "
->
 
+>
 
 Sem conexão
 
-
 </h2>
-
 
 
 </div>
@@ -532,13 +507,12 @@ Sem conexão
 online && loading &&
 
 
-
 <div
 
 className="
 absolute
 inset-0
-z-10
+z-20
 bg-black
 text-white
 flex
@@ -565,23 +539,21 @@ animate-spin
 />
 
 
-
 <p
+
 className="
 mt-5
 font-bold
 "
+
 >
 
-
 Aguardando conexão...
-
 
 </p>
 
 
 </div>
-
 
 
 }
@@ -594,36 +566,36 @@ Aguardando conexão...
 
 
 
-<iframe
+{/* VIDEO OCUPA TODA DIV */}
 
+
+
+<iframe
 
 id="transmissao"
 
-
 key={canalAtual.url}
 
-
 src={canalAtual.url}
-
 
 title={canalAtual.nome}
 
 
-
 className="
+
+absolute
+
+inset-0
 
 w-full
 
 h-full
 
-block
+border-0
 
 "
 
-
-
 scrolling="no"
-
 
 
 allow="
@@ -634,21 +606,10 @@ picture-in-picture
 "
 
 
-
 allowFullScreen
 
 
-
 onLoad={()=>setLoading(false)}
-
-
-
-style={{
-
-border:"none"
-
-}}
-
 
 
 />
@@ -658,9 +619,8 @@ border:"none"
 
 
 
+
 </div>
-
-
 
 
 
