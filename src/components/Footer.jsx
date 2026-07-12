@@ -425,7 +425,7 @@ transition
 
 >
 
-Conheça o Develops da RCTV Stream
+Conheça o Desenvolvedor da RCTV Stream
 
 <FaArrowRight/>
 
