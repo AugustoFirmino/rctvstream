@@ -54,13 +54,12 @@ const [espectadores,setEspectadores] = useState({});
 
 
 
-
 // INTERNET
 
 useEffect(()=>{
 
 
-const onlineHandler = ()=>{
+const onlineHandler=()=>{
 
 setOnline(true);
 setLoading(true);
@@ -68,7 +67,7 @@ setLoading(true);
 };
 
 
-const offlineHandler = ()=>{
+const offlineHandler=()=>{
 
 setOnline(false);
 
@@ -91,6 +90,7 @@ offlineHandler
 
 return()=>{
 
+
 window.removeEventListener(
 "online",
 onlineHandler
@@ -101,6 +101,7 @@ window.removeEventListener(
 "offline",
 offlineHandler
 );
+
 
 };
 
@@ -115,12 +116,15 @@ offlineHandler
 
 
 
-// SOCKET.IO RENDER
+
+
+// SOCKET.IO
 
 useEffect(()=>{
 
 
-// garantir conexão
+// conectar
+
 if(!socket.connected){
 
 socket.connect();
@@ -130,14 +134,23 @@ socket.connect();
 
 
 
-// receber espectadores
-const atualizarEspectadores = (dados)=>{
+// receber números
+
+const atualizarEspectadores=(dados)=>{
+
+
+console.log(
+"Espectadores:",
+dados
+);
 
 
 setEspectadores(dados);
 
 
 };
+
+
 
 
 
@@ -151,9 +164,10 @@ atualizarEspectadores
 
 
 
-// entrar no canal atual
 
-const entrarCanal = ()=>{
+// entrar canal
+
+const entrar=()=>{
 
 
 socket.emit(
@@ -170,14 +184,16 @@ canalAtual.nome
 
 if(socket.connected){
 
-entrarCanal();
+
+entrar();
+
 
 }else{
 
 
 socket.on(
 "connect",
-entrarCanal
+entrar
 );
 
 
@@ -197,14 +213,15 @@ atualizarEspectadores
 
 socket.off(
 "connect",
-entrarCanal
+entrar
 );
 
 
 };
 
 
-},[]);
+},[canalAtual]);
+
 
 
 
@@ -217,14 +234,13 @@ entrarCanal
 
 // TROCAR CANAL
 
-const trocarCanal = (canal)=>{
+const trocarCanal=(canal)=>{
 
 
 setLoading(true);
 
 
 setCanalAtual(canal);
-
 
 
 socket.emit(
@@ -234,6 +250,7 @@ canal.nome
 
 
 };
+
 
 
 
@@ -263,8 +280,7 @@ items-center
 
 
 
-{/* MENU DOS CANAIS */}
-
+{/* MENU */}
 
 <div
 
@@ -366,7 +382,6 @@ gap-1
 
 {/* TITULO */}
 
-
 <div
 
 className="
@@ -450,7 +465,6 @@ AO VIVO
 
 {/* PLAYER */}
 
-
 <div
 
 className="
@@ -466,7 +480,6 @@ lg:h-[610px]
 "
 
 >
-
 
 
 
@@ -503,14 +516,7 @@ mb-5
 />
 
 
-<h2
-
-className="
-text-xl
-font-bold
-"
-
->
+<h2 className="text-xl font-bold">
 
 Sem conexão
 
@@ -521,8 +527,6 @@ Sem conexão
 
 
 }
-
-
 
 
 
@@ -549,7 +553,6 @@ items-center
 "
 
 >
-
 
 <p className="font-bold">
 
@@ -627,4 +630,3 @@ onLoad={()=>setLoading(false)}
 
 
 }
-
