@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import socket from "./socket";
 
 import {
@@ -6,6 +6,7 @@ import {
   FaCircle,
   FaBroadcastTower
 } from "react-icons/fa";
+
 
 
 export default function Stream() {
@@ -49,11 +50,24 @@ url:"https://www.youtube.com/embed/CIpNJ-bMGsI"
 
 
 
+
 const [canalAtual,setCanalAtual] = useState(canais[0]);
+
+
+const canalRef = useRef(canais[0]);
+
+
 
 const [loading,setLoading] = useState(true);
 
-const [online,setOnline] = useState(navigator.onLine);
+
+
+const [online,setOnline] = useState(
+navigator.onLine
+);
+
+
+
 
 const [espectadores,setEspectadores] = useState({
 
@@ -106,7 +120,6 @@ setOnline(false);
 
 
 
-
 window.addEventListener(
 "online",
 onlineHandler
@@ -130,10 +143,12 @@ onlineHandler
 );
 
 
+
 window.removeEventListener(
 "offline",
 offlineHandler
 );
+
 
 
 };
@@ -151,7 +166,9 @@ offlineHandler
 
 
 
-// SOCKET
+
+
+// SOCKET PRINCIPAL
 
 useEffect(()=>{
 
@@ -166,20 +183,17 @@ socket.connect();
 
 
 
-// receber contadores
 
 const receberEspectadores=(dados)=>{
 
 
 console.log(
-"Espectadores:",
+"Contadores:",
 dados
 );
 
 
-
 setEspectadores(dados);
-
 
 
 };
@@ -188,37 +202,37 @@ setEspectadores(dados);
 
 
 
-socket.on(
-"espectadores",
-receberEspectadores
-);
 
 
-
-
-
-
-
-// entrar sempre no TPA 1 ao conectar
 
 const entrarCanal=()=>{
 
 
 console.log(
-"Entrando:",
-canalAtual.nome
+"Entrando no canal:",
+canalRef.current.nome
 );
 
 
 
 socket.emit(
 "entrarCanal",
-canalAtual.nome
+canalRef.current.nome
+);
+
+
+
+// pedir atualização imediata
+
+socket.emit(
+"pedirEspectadores"
 );
 
 
 
 };
+
+
 
 
 
@@ -228,6 +242,15 @@ socket.on(
 "connect",
 entrarCanal
 );
+
+
+
+socket.on(
+"espectadores",
+receberEspectadores
+);
+
+
 
 
 
@@ -243,14 +266,10 @@ entrarCanal();
 
 
 
+
+
+
 return()=>{
-
-
-socket.off(
-"espectadores",
-receberEspectadores
-);
-
 
 
 socket.off(
@@ -260,11 +279,19 @@ entrarCanal
 
 
 
+socket.off(
+"espectadores",
+receberEspectadores
+);
+
+
+
 };
 
 
 
-},[canalAtual.nome]);
+},[]);
+
 
 
 
@@ -285,14 +312,33 @@ setLoading(true);
 
 
 
+canalRef.current = canal;
+
+
+
 setCanalAtual(canal);
 
+
+
+
+
+if(socket.connected){
 
 
 socket.emit(
 "entrarCanal",
 canal.nome
 );
+
+
+
+socket.emit(
+"pedirEspectadores"
+);
+
+
+
+}
 
 
 
@@ -322,7 +368,6 @@ items-center
 "
 
 >
-
 
 
 
@@ -405,21 +450,22 @@ gap-1
 <FaEye/>
 
 
-{espectadores[canal.nome]}
+{espectadores[canal.nome] || 0}
 
 
 
 </span>
 
 
+
 </button>
+
 
 
 ))
 
 
 }
-
 
 
 </div>
@@ -468,6 +514,7 @@ font-bold
 
 
 
+
 <div
 
 className="
@@ -503,7 +550,7 @@ AO VIVO
 <FaEye/>
 
 
-{espectadores[canalAtual.nome]}
+{espectadores[canalAtual.nome] || 0}
 
 
 
@@ -576,7 +623,6 @@ mb-5
 />
 
 
-
 <h2 className="text-xl font-bold">
 
 Sem conexão
@@ -588,7 +634,9 @@ Sem conexão
 </div>
 
 
+
 }
+
 
 
 
@@ -629,6 +677,7 @@ Aguardando conexão...
 </div>
 
 
+
 }
 
 
@@ -639,8 +688,6 @@ Aguardando conexão...
 
 
 <iframe
-
-id="transmissao"
 
 key={canalAtual.url}
 
@@ -695,6 +742,7 @@ onLoad={()=>setLoading(false)}
 
 
 );
+
 
 
 }
