@@ -27,8 +27,8 @@ nome:"Augusto Firmino Correia",
 
 foto:dev1,
 
-instituicao:"Universidade ISPEKA",
-
+instituicao:"Instituição: Instituto de Telecomuicações - ITEL",
+universidade:"Universidade: ISPEKA",
 funcao:"Programador Full Stack | Técnico de Informática",
 
 
@@ -36,7 +36,7 @@ funcao:"Programador Full Stack | Técnico de Informática",
 biografia:`
 
 Augusto Firmino Correia é Programador Full Stack e Técnico de Informática,
-com formação na Universidade ISPEKA, dedicado ao desenvolvimento de soluções
+com formação na Universidade: ISPEKA, dedicado ao desenvolvimento de soluções
 tecnológicas modernas, inovadoras e eficientes.
 
 Atua na criação de aplicações web completas, sistemas digitais, plataformas
@@ -233,6 +233,7 @@ mt-3
 
 {desenvolvedor.instituicao}
 
+{desenvolvedor.universidade}
 </p>
 
 
