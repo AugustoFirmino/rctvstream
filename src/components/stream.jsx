@@ -113,52 +113,74 @@ export default function Stream() {
   useEffect(()=>{
 
 
-    // receber contagem
-
-    socket.on(
-      "espectadores",
-      (dados)=>{
-
+    const receberEspectadores = (dados)=>{
 
         console.log(
-          "Contagem:",
-          dados
+            "Contagem:",
+            dados
         );
-
 
         setEspectadores(dados);
 
+    };
 
-      }
+
+    socket.on(
+        "espectadores",
+        receberEspectadores
     );
 
 
+    const entrar = ()=>{
 
-    // entrar no primeiro canal
+        console.log(
+            "Socket conectado:",
+            socket.id
+        );
 
-    socket.emit(
-      "entrarCanal",
-      canais[0].nome
-    );
+
+        socket.emit(
+            "entrarCanal",
+            canais[0].nome
+        );
+
+    };
+
+
+    if(socket.connected){
+
+        entrar();
+
+    }else{
+
+        socket.on(
+            "connect",
+            entrar
+        );
+
+    }
 
 
 
     return()=>{
 
 
-      socket.off(
-        "espectadores"
-      );
+        socket.off(
+            "espectadores",
+            receberEspectadores
+        );
+
+
+        socket.off(
+            "connect",
+            entrar
+        );
 
 
     };
 
 
-  },[]);
-
-
-
-
+},[]);
 
 
 

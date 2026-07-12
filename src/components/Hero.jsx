@@ -31,7 +31,7 @@ function Hero() {
             gap-2
             w-fit
           ">
-            <FaBroadcastTower />
+            <FaBroadcastTower className="animate-pulse text-xl" />
             AO VIVO • STREAM RCTV
           </span>
 
