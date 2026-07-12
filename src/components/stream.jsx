@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import socket from "./socket";
 
@@ -6,7 +7,6 @@ import {
   FaCircle,
   FaBroadcastTower
 } from "react-icons/fa";
-
 
 
 export default function Stream() {
@@ -41,24 +41,24 @@ url:"https://www.youtube.com/embed/CIpNJ-bMGsI"
 
 
 
-const [canalAtual,setCanalAtual]=useState(canais[0]);
+const [canalAtual,setCanalAtual] = useState(canais[0]);
 
-const [loading,setLoading]=useState(true);
+const [loading,setLoading] = useState(true);
 
-const [online,setOnline]=useState(navigator.onLine);
+const [online,setOnline] = useState(navigator.onLine);
 
-const [espectadores,setEspectadores]=useState({});
-
-
+const [espectadores,setEspectadores] = useState({});
 
 
 
 
+
+// INTERNET
 
 useEffect(()=>{
 
 
-const onlineHandler=()=>{
+const onlineHandler = ()=>{
 
 setOnline(true);
 setLoading(true);
@@ -66,7 +66,7 @@ setLoading(true);
 };
 
 
-const offlineHandler=()=>{
+const offlineHandler = ()=>{
 
 setOnline(false);
 
@@ -74,17 +74,31 @@ setOnline(false);
 
 
 
-window.addEventListener("online",onlineHandler);
+window.addEventListener(
+"online",
+onlineHandler
+);
 
-window.addEventListener("offline",offlineHandler);
+
+window.addEventListener(
+"offline",
+offlineHandler
+);
 
 
 
 return()=>{
 
-window.removeEventListener("online",onlineHandler);
+window.removeEventListener(
+"online",
+onlineHandler
+);
 
-window.removeEventListener("offline",offlineHandler);
+
+window.removeEventListener(
+"offline",
+offlineHandler
+);
 
 };
 
@@ -97,12 +111,12 @@ window.removeEventListener("offline",offlineHandler);
 
 
 
-
+// SOCKET.IO RENDER
 
 useEffect(()=>{
 
 
-const receberEspectadores=(dados)=>{
+const receberEspectadores = (dados)=>{
 
 setEspectadores(dados);
 
@@ -118,12 +132,13 @@ receberEspectadores
 
 
 
-const entrar=()=>{
+
+const entrarCanal = ()=>{
 
 
 socket.emit(
 "entrarCanal",
-canais[0].nome
+canalAtual.nome
 );
 
 
@@ -131,16 +146,20 @@ canais[0].nome
 
 
 
+
+
 if(socket.connected){
 
-entrar();
+entrarCanal();
 
 }else{
 
+
 socket.on(
 "connect",
-entrar
+entrarCanal
 );
+
 
 }
 
@@ -158,7 +177,7 @@ receberEspectadores
 
 socket.off(
 "connect",
-entrar
+entrarCanal
 );
 
 
@@ -174,10 +193,14 @@ entrar
 
 
 
-const trocarCanal=(canal)=>{
+
+// TROCAR CANAL
+
+const trocarCanal = (canal)=>{
 
 
 setLoading(true);
+
 
 setCanalAtual(canal);
 
@@ -190,8 +213,6 @@ canal.nome
 
 
 };
-
-
 
 
 
@@ -218,11 +239,8 @@ items-center
 
 
 
+{/* MENU DOS CANAIS */}
 
-
-
-
-{/* MENU */}
 
 <div
 
@@ -250,16 +268,13 @@ key={index}
 onClick={()=>trocarCanal(canal)}
 
 className={`
-
 px-4
 py-2
 rounded-lg
 font-semibold
 text-sm
 
-
 ${
-
 canalAtual.nome===canal.nome
 
 ?
@@ -272,10 +287,7 @@ canalAtual.nome===canal.nome
 
 }
 
-`
-
-}
-
+`}
 
 >
 
@@ -298,9 +310,12 @@ gap-1
 
 >
 
+
 <FaEye/>
 
+
 {espectadores[canal.nome] || 0}
+
 
 </span>
 
@@ -376,10 +391,12 @@ text-sm
 
 
 <FaCircle
+
 className="
 text-xs
 animate-pulse
 "
+
 />
 
 
@@ -392,48 +409,34 @@ AO VIVO
 {espectadores[canalAtual.nome] || 0}
 
 
+</div>
+
 
 </div>
 
 
 
-</div>
 
 
 
 
 
 
-
-
-
-{/* PLAYER FULL */}
-
+{/* PLAYER */}
 
 
 <div
 
 className="
-
 relative
-
 w-full
-
 bg-black
-
 rounded-xl
-
 overflow-hidden
-
 shadow-xl
-
-
 h-[220px]
-
 sm:h-[400px]
-
 lg:h-[610px]
-
 "
 
 >
@@ -442,10 +445,8 @@ lg:h-[610px]
 
 
 
-
-
-
 {
+
 !online &&
 
 
@@ -504,32 +505,21 @@ Sem conexão
 
 
 {
+
 online && loading &&
 
 
 <div
 
 className="
-
-relative
-
-w-full
-
+absolute
+inset-0
+z-20
 bg-black
-
-
-
-overflow-hidden
-
-shadow-xl
-
-
-h-[220px]
-
-sm:h-[400px]
-
-lg:h-[610px]
-
+text-white
+flex
+justify-center
+items-center
 "
 
 >
@@ -538,7 +528,6 @@ lg:h-[610px]
 <p
 
 className="
-mt-5
 font-bold
 "
 
@@ -560,11 +549,6 @@ Aguardando conexão...
 
 
 
-
-
-{/* VIDEO OCUPA TODA DIV */}
-
-
 <iframe
 
 id="transmissao"
@@ -577,26 +561,14 @@ title={canalAtual.nome}
 
 
 className="
-
 absolute
-
 top-1/2
-
 left-1/2
-
-
-w-[100%]
-
+w-full
 h-[90%]
-
-
 -translate-x-1/2
-
 -translate-y-1/2
-
-
 border-0
-
 "
 
 
@@ -623,9 +595,7 @@ onLoad={()=>setLoading(false)}
 
 
 
-
 </div>
-
 
 
 
@@ -636,3 +606,4 @@ onLoad={()=>setLoading(false)}
 
 
 }
+
