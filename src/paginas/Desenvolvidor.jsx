@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import {
   FaArrowLeft,
   FaGithub,
@@ -8,8 +9,10 @@ import {
   FaPhone
 } from "react-icons/fa";
 
+
 import dev1 from "../assets/dev1.jpg";
 import dev2 from "../assets/dev2.jpg";
+
 
 
 function Desenvolvedores() {
@@ -19,32 +22,82 @@ const desenvolvedores = [
 
 {
 id:1,
-nome:"Augusto Firmino",
-foto:dev1,
-instituicao:"Instituto Superior Politécnico",
-funcao:"Full Stack Developer",
 
-biografia:
-"Augusto Firmino Correia é Programador Full Stack e Técnico de Informática, com formação na Universidade ISPEKA, dedicado ao desenvolvimento de soluções tecnológicas modernas, inovadoras e eficientes.Atua na criação de aplicações web completas, sistemas digitais, plataformas online e soluções personalizadas, combinando conhecimentos de programação, infraestrutura informática e ferramentas tecnológicas para responder às necessidades de empresas e utilizadores.Possui competências em React.js para desenvolvimento de interfaces modernas e responsivas, Node.js para criação de APIs e serviços backend, MySQL para gestão de bases de dados, Tailwind CSS para construção de layouts profissionais, além da integração de Inteligência Artificial (IA) em projetos digitais.Como Técnico de Informática, possui conhecimentos em manutenção de computadores, instalação e configuração de sistemas, suporte técnico, resolução de problemas de hardware e software, redes informáticas e utilização eficiente de ferramentas tecnológicas.Complementa sua formação com conhecimentos em Marketing Digital, Excel Avançado e Informática na Óptica do Utilizador, aplicando tecnologia, análise de dados e estratégias digitais para melhorar processos, aumentar a produtividade e desenvolver soluções de valor.Com uma visão multidisciplinar entre desenvolvimento de software, suporte informático, inteligência artificial e comunicação digital, busca transformar ideias em soluções tecnológicas funcionais, seguras e preparadas para os desafios do mundo digital.",
+nome:"Augusto Firmino Correia",
+
+foto:dev1,
+
+instituicao:"Universidade ISPEKA",
+
+funcao:"Programador Full Stack | Técnico de Informática",
+
+
+biografia:`
+
+Augusto Firmino Correia é Programador Full Stack e Técnico de Informática, 
+com formação na Universidade ISPEKA, dedicado ao desenvolvimento de soluções 
+tecnológicas modernas, inovadoras e eficientes.
+
+Atua na criação de aplicações web completas, sistemas digitais, plataformas 
+online e soluções personalizadas, combinando conhecimentos de programação, 
+infraestrutura informática e ferramentas tecnológicas.
+
+Possui competências em React.js para desenvolvimento de interfaces modernas 
+e responsivas, Node.js para criação de APIs e serviços backend, MySQL para 
+gestão de bases de dados, Tailwind CSS para construção de layouts profissionais 
+e integração de Inteligência Artificial (IA) em projetos digitais.
+
+Como Técnico de Informática, possui conhecimentos em manutenção de computadores,
+instalação e configuração de sistemas, suporte técnico, resolução de problemas
+de hardware e software, redes informáticas e ferramentas tecnológicas.
+
+Complementa sua formação com conhecimentos em Marketing Digital, Excel Avançado 
+e Informática na Óptica do Utilizador, aplicando tecnologia, análise de dados 
+e estratégias digitais para melhorar processos e criar soluções de valor.
+
+Com uma visão multidisciplinar entre desenvolvimento de software, suporte 
+informático, inteligência artificial e comunicação digital, procura transformar 
+ideias em soluções tecnológicas funcionais, seguras e inovadoras.
+
+`,
 
 
 projetos:[
+
 "RCTV Stream - Plataforma de transmissão online",
+
 "Sistema de Gestão de Directores",
+
 "Tradutor Português - Kimbundu",
+
 "Aplicações Web Empresariais"
+
 ],
+
 
 tecnologias:[
+
 "React.js",
+
 "Node.js",
+
 "MySQL",
+
 "Tailwind CSS",
+
 "Socket.io",
-"Cloudinary"
+
+"Cloudinary",
+
+"Inteligência Artificial",
+
+"Marketing Digital"
+
 ],
 
+
 email:"augusto@email.com",
+
 telefone:"+244 900 000 000"
 
 },
@@ -52,40 +105,73 @@ telefone:"+244 900 000 000"
 
 
 {
+
+
 id:2,
+
 nome:"Carlos Manuel",
+
 foto:dev2,
+
+
 instituicao:"Universidade de Tecnologia",
+
 funcao:"Software Developer",
 
-biografia:
-"Desenvolvedor focado em soluções digitais, criação de interfaces intuitivas e sistemas escaláveis. Tem experiência em desenvolvimento web e integração de APIs.",
+
+biografia:`
+
+Desenvolvedor focado na criação de soluções digitais modernas,
+interfaces intuitivas e sistemas escaláveis.
+
+Possui experiência no desenvolvimento web, integração de APIs,
+criação de aplicações e implementação de tecnologias para melhorar
+processos digitais.
+
+`,
 
 
 projetos:[
+
 "Sistema de Gestão Escolar",
+
 "Aplicativo Mobile",
+
 "Dashboard Administrativo",
+
 "Portal Institucional"
+
 ],
 
 
+
 tecnologias:[
+
 "JavaScript",
+
 "React",
+
 "Express",
+
 "MongoDB",
+
 "Git",
+
 "Figma"
+
 ],
 
 
 email:"carlos@email.com",
+
 telefone:"+244 911 111 111"
+
 
 }
 
+
 ];
+
 
 
 
@@ -103,10 +189,11 @@ px-5
 <div className="max-w-6xl mx-auto">
 
 
-{/* voltar */}
 
 <Link
+
 to="/"
+
 className="
 flex
 items-center
@@ -116,6 +203,7 @@ text-red-400
 hover:text-red-300
 transition
 "
+
 >
 
 <FaArrowLeft/>
@@ -123,6 +211,8 @@ transition
 Voltar
 
 </Link>
+
+
 
 
 
@@ -140,6 +230,7 @@ Desenvolvedores
 
 
 
+
 <div className="
 grid
 md:grid-cols-2
@@ -147,12 +238,16 @@ gap-10
 ">
 
 
+
 {
+
 desenvolvedores.map((dev)=>(
 
 
 <div
+
 key={dev.id}
+
 className="
 bg-gray-900
 rounded-2xl
@@ -163,6 +258,7 @@ border-gray-800
 hover:border-red-500
 transition
 "
+
 >
 
 
@@ -178,6 +274,8 @@ items-center
 
 src={dev.foto}
 
+alt={dev.nome}
+
 className="
 w-36
 h-36
@@ -186,6 +284,7 @@ object-cover
 border-4
 border-red-600
 "
+
 />
 
 
@@ -194,6 +293,7 @@ border-red-600
 text-2xl
 font-bold
 mt-5
+text-center
 ">
 
 {dev.nome}
@@ -201,7 +301,12 @@ mt-5
 </h2>
 
 
-<p className="text-red-400">
+
+
+<p className="
+text-red-400
+text-center
+">
 
 {dev.funcao}
 
@@ -226,17 +331,26 @@ mt-1
 
 
 
+
 <div className="mt-6">
 
 
-<h3 className="font-bold text-xl mb-2">
+<h3 className="
+font-bold
+text-xl
+mb-3
+">
 
 Biografia
 
 </h3>
 
 
-<p className="text-gray-300 leading-relaxed">
+<p className="
+text-gray-300
+leading-relaxed
+whitespace-pre-line
+">
 
 {dev.biografia}
 
@@ -249,14 +363,21 @@ Biografia
 
 
 
+
+
 <div className="mt-6">
 
 
-<h3 className="font-bold text-xl mb-3">
+<h3 className="
+font-bold
+text-xl
+mb-3
+">
 
 Projetos Realizados
 
 </h3>
+
 
 
 <ul className="
@@ -268,17 +389,22 @@ space-y-2
 
 
 {
-dev.projetos.map((p,index)=>(
+
+dev.projetos.map((item,index)=>(
 
 <li key={index}>
-{p}
+
+{item}
+
 </li>
 
 ))
+
 }
 
 
 </ul>
+
 
 
 </div>
@@ -288,10 +414,16 @@ dev.projetos.map((p,index)=>(
 
 
 
+
+
 <div className="mt-6">
 
 
-<h3 className="font-bold text-xl mb-3">
+<h3 className="
+font-bold
+text-xl
+mb-3
+">
 
 Tecnologias
 
@@ -307,10 +439,14 @@ gap-2
 
 
 {
+
 dev.tecnologias.map((tec,index)=>(
 
+
 <span
+
 key={index}
+
 className="
 bg-red-600/20
 border
@@ -320,6 +456,7 @@ py-1
 rounded-full
 text-sm
 "
+
 >
 
 {tec}
@@ -328,6 +465,8 @@ text-sm
 
 
 ))
+
+
 }
 
 
@@ -362,7 +501,10 @@ Contactos para Projetos
 
 
 
-<div className="space-y-3 text-gray-300">
+<div className="
+space-y-3
+text-gray-300
+">
 
 
 <p className="
@@ -376,6 +518,8 @@ gap-3
 {dev.email}
 
 </p>
+
+
 
 
 <p className="
@@ -396,6 +540,7 @@ gap-3
 
 
 
+
 <div className="
 flex
 gap-5
@@ -404,11 +549,14 @@ mt-5
 
 
 <a
+
 href="#"
+
 className="
 text-2xl
 hover:text-red-500
 "
+
 >
 
 <FaGithub/>
@@ -416,12 +564,16 @@ hover:text-red-500
 </a>
 
 
+
 <a
+
 href="#"
+
 className="
 text-2xl
 hover:text-red-500
 "
+
 >
 
 <FaLinkedin/>
@@ -429,11 +581,13 @@ hover:text-red-500
 </a>
 
 
-</div>
-
-
 
 </div>
+
+
+
+</div>
+
 
 
 
@@ -443,6 +597,7 @@ hover:text-red-500
 
 ))
 
+
 }
 
 
@@ -450,10 +605,12 @@ hover:text-red-500
 </div>
 
 
+
 </div>
 
 
 </div>
+
 
 )
 
