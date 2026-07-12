@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import socket from "./socket";
 
@@ -13,31 +12,40 @@ export default function Stream() {
 
 
 const canais = [
+
 {
 nome:"TPA 1",
 url:"https://til-waiver-proudly-brave.trycloudflare.com/embed/1"
 },
+
 {
 nome:"TPA 2",
 url:"https://til-waiver-proudly-brave.trycloudflare.com/embed/2"
 },
+
 {
 nome:"TPA Notícias",
 url:"https://til-waiver-proudly-brave.trycloudflare.com/embed/3"
 },
+
 {
 nome:"TV Zimbo",
 url:"https://til-waiver-proudly-brave.trycloudflare.com/embed/4"
 },
+
 {
 nome:"TV Girasol",
 url:"https://til-waiver-proudly-brave.trycloudflare.com/embed/5"
 },
+
 {
 nome:"TV Parlamento",
 url:"https://www.youtube.com/embed/CIpNJ-bMGsI"
 }
+
 ];
+
+
 
 
 
@@ -54,6 +62,9 @@ const [espectadores,setEspectadores] = useState({});
 
 
 
+
+
+
 // INTERNET
 
 useEffect(()=>{
@@ -62,7 +73,16 @@ useEffect(()=>{
 const onlineHandler=()=>{
 
 setOnline(true);
+
 setLoading(true);
+
+
+if(!socket.connected){
+
+socket.connect();
+
+}
+
 
 };
 
@@ -116,14 +136,11 @@ offlineHandler
 
 
 
-
-
-// SOCKET.IO
+// SOCKET
 
 useEffect(()=>{
 
 
-// conectar
 
 if(!socket.connected){
 
@@ -134,18 +151,20 @@ socket.connect();
 
 
 
-// receber números
+// receber contadores
 
-const atualizarEspectadores=(dados)=>{
+const receberEspectadores=(dados)=>{
 
 
 console.log(
-"Espectadores:",
+"CONTADORES:",
 dados
 );
 
 
-setEspectadores(dados);
+setEspectadores({
+...dados
+});
 
 
 };
@@ -156,7 +175,7 @@ setEspectadores(dados);
 
 socket.on(
 "espectadores",
-atualizarEspectadores
+receberEspectadores
 );
 
 
@@ -164,10 +183,16 @@ atualizarEspectadores
 
 
 
+// entrar no canal sempre que conectar
 
-// entrar canal
+const entrarCanal=()=>{
 
-const entrar=()=>{
+
+console.log(
+"Entrou:",
+canalAtual.nome
+);
+
 
 
 socket.emit(
@@ -182,22 +207,23 @@ canalAtual.nome
 
 
 
-if(socket.connected){
-
-
-entrar();
-
-
-}else{
-
-
 socket.on(
 "connect",
-entrar
+entrarCanal
 );
 
 
+
+
+
+// se já conectado
+
+if(socket.connected){
+
+entrarCanal();
+
 }
+
 
 
 
@@ -207,20 +233,23 @@ return()=>{
 
 socket.off(
 "espectadores",
-atualizarEspectadores
+receberEspectadores
 );
+
 
 
 socket.off(
 "connect",
-entrar
+entrarCanal
 );
+
 
 
 };
 
 
-},[canalAtual]);
+
+},[canalAtual.nome]);
 
 
 
@@ -243,14 +272,21 @@ setLoading(true);
 setCanalAtual(canal);
 
 
+
+if(socket.connected){
+
+
 socket.emit(
 "entrarCanal",
 canal.nome
 );
 
 
-};
+}
 
+
+
+};
 
 
 
@@ -280,7 +316,9 @@ items-center
 
 
 
+
 {/* MENU */}
+
 
 <div
 
@@ -336,6 +374,7 @@ canalAtual.nome===canal.nome
 {canal.nome}
 
 
+
 <br/>
 
 
@@ -355,7 +394,8 @@ gap-1
 <FaEye/>
 
 
-{espectadores[canal.nome] || 0}
+{espectadores[canal.nome] ?? 0}
+
 
 
 </span>
@@ -370,6 +410,7 @@ gap-1
 }
 
 
+
 </div>
 
 
@@ -381,6 +422,8 @@ gap-1
 
 
 {/* TITULO */}
+
+
 
 <div
 
@@ -408,6 +451,7 @@ font-bold
 {canalAtual.nome}
 
 </h2>
+
 
 
 
@@ -447,10 +491,12 @@ AO VIVO
 <FaEye/>
 
 
-{espectadores[canalAtual.nome] || 0}
+{espectadores[canalAtual.nome] ?? 0}
+
 
 
 </div>
+
 
 
 </div>
@@ -464,6 +510,8 @@ AO VIVO
 
 
 {/* PLAYER */}
+
+
 
 <div
 
@@ -480,6 +528,7 @@ lg:h-[610px]
 "
 
 >
+
 
 
 
@@ -516,6 +565,7 @@ mb-5
 />
 
 
+
 <h2 className="text-xl font-bold">
 
 Sem conexão
@@ -527,6 +577,7 @@ Sem conexão
 
 
 }
+
 
 
 
@@ -565,6 +616,7 @@ Aguardando conexão...
 
 
 }
+
 
 
 
@@ -619,7 +671,11 @@ onLoad={()=>setLoading(false)}
 
 
 
+
+
 </div>
+
+
 
 
 
