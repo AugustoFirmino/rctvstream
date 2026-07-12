@@ -12,9 +12,10 @@ import {
 } from "react-icons/fa";
 
 
-import   Hero from "../components/Hero";
-import Estatistica from "../components/Estatisticas";
+import Hero from "../components/Hero";
+import Estatisticas from "../components/Estatisticas";
 import Footer from "../components/footer";
+
 
 
 export default function Criador() {
@@ -49,14 +50,23 @@ tecnologia:
 "React, Tailwind CSS, APIs"
 }
 
-
 ];
 
 
 
 
 
+
 return (
+
+<>
+
+
+<Hero/>
+
+
+<Estatisticas/>
+
 
 
 <div
@@ -69,10 +79,6 @@ px-5
 "
 
 >
-<Hero/>
-
-<Estatistica/>
-  
 
 
 <div
@@ -83,6 +89,8 @@ mx-auto
 "
 
 >
+
+
 
 
 
@@ -107,7 +115,6 @@ gap-8
 "
 
 >
-
 
 
 <div
@@ -137,7 +144,6 @@ shadow-xl
 
 <div>
 
-
 <h1
 
 className="
@@ -166,6 +172,7 @@ Fundador e Desenvolvedor do RCTV Stream
 </p>
 
 
+
 <p
 
 className="
@@ -181,7 +188,6 @@ Criador de soluções digitais, aplicações web e plataformas de transmissão o
 
 
 </div>
-
 
 
 </div>
@@ -209,7 +215,6 @@ mt-8
 >
 
 
-
 <Card
 
 icon={<FaUser/>}
@@ -219,10 +224,13 @@ titulo="Dados Pessoais"
 texto={
 
 <>
+
 <strong>Nome:</strong> Seu Nome
+
 <br/>
 
 <strong>Idade:</strong> 25 anos
+
 <br/>
 
 <strong>Local:</strong> Angola
@@ -235,6 +243,8 @@ texto={
 
 
 
+
+
 <Card
 
 icon={<FaGraduationCap/>}
@@ -244,20 +254,31 @@ titulo="Formação"
 texto={
 
 <>
+
 <strong>Instituição:</strong>
+
 <br/>
+
 Nome da Escola / Universidade
+
 
 <br/><br/>
 
+
 Área:
+
+<br/>
+
 Tecnologia e Desenvolvimento de Software
+
 
 </>
 
 }
 
 />
+
+
 
 
 
@@ -272,6 +293,7 @@ titulo="Especialidade"
 texto={
 
 <>
+
 Desenvolvimento de:
 
 <br/>
@@ -289,6 +311,7 @@ Desenvolvimento de:
 <br/>
 
 • Soluções Digitais
+
 
 </>
 
@@ -309,6 +332,7 @@ Desenvolvimento de:
 
 
 {/* BIOGRAFIA */}
+
 
 
 <section
@@ -345,7 +369,6 @@ Biografia
 
 
 
-
 <p
 
 className="
@@ -366,7 +389,7 @@ dos utilizadores através da tecnologia.
 
 
 Apaixonado por programação e inovação,
-tenho desenvolvido soluções digitais focadas em
+desenvolvo soluções digitais focadas em
 performance, simplicidade e experiência do utilizador.
 
 
@@ -381,6 +404,7 @@ a crescerem no ambiente digital.
 </p>
 
 
+
 </section>
 
 
@@ -392,6 +416,7 @@ a crescerem no ambiente digital.
 
 
 {/* PROJETOS */}
+
 
 
 <section
@@ -417,9 +442,11 @@ gap-3
 
 >
 
+
 <FaProjectDiagram/>
 
 Projetos Desenvolvidos
+
 
 </h2>
 
@@ -464,7 +491,6 @@ transition
 className="
 text-xl
 font-bold
-text-gray-900
 "
 
 >
@@ -472,6 +498,7 @@ text-gray-900
 {p.titulo}
 
 </h3>
+
 
 
 <p
@@ -508,6 +535,7 @@ font-semibold
 </div>
 
 
+
 </div>
 
 
@@ -521,6 +549,7 @@ font-semibold
 </div>
 
 
+
 </section>
 
 
@@ -532,6 +561,7 @@ font-semibold
 
 
 {/* CONTACTO */}
+
 
 
 <section
@@ -624,17 +654,26 @@ www.rctvstream.com
 </div>
 
 
+
 </section>
 
 
 
 
 
-</div>
 
 
 </div>
 
+
+</div>
+
+
+
+<Footer/>
+
+
+</>
 
 );
 
@@ -689,7 +728,9 @@ text-2xl
 
 {icon}
 
+
 </div>
+
 
 
 
@@ -705,7 +746,10 @@ mt-5
 
 {titulo}
 
+
 </h3>
+
+
 
 
 <p
@@ -719,14 +763,14 @@ text-gray-600
 
 {texto}
 
+
 </p>
 
 
 
-<Footer/>
 </div>
 
-);
 
+);
 
 }
