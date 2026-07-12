@@ -568,7 +568,6 @@ Aguardando conexão...
 
 {/* VIDEO OCUPA TODA DIV */}
 
-
 <iframe
 
 id="transmissao"
@@ -584,19 +583,19 @@ className="
 
 absolute
 
-top-0
+top-1/2
 
-left-0
-
-
-w-[120%]
-
-h-[120%]
+left-1/2
 
 
--translate-x-[10%]
+w-[140%]
 
--translate-y-[10%]
+h-[140%]
+
+
+-translate-x-1/2
+
+-translate-y-1/2
 
 
 border-0
@@ -622,8 +621,6 @@ onLoad={()=>setLoading(false)}
 
 
 />
-
-
 
 
 
