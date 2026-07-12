@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import {
@@ -10,7 +10,8 @@ import {
   FaCode,
   FaLaptopCode,
   FaRobot,
-  FaBullhorn
+  FaBullhorn,
+  FaTimes
 } from "react-icons/fa";
 
 
@@ -21,76 +22,184 @@ import dev1 from "../assets/devs1.jpeg";
 function Desenvolvedores() {
 
 
+const [projetoSelecionado, setProjetoSelecionado] = useState(null);
+
+
+
 const desenvolvedor = {
+
 
 nome:"Augusto Firmino Correia",
 
 foto:dev1,
 
-instituicao:"Ensino Médio: Instituto de Telecomuicações - ITEL",
+
+instituicao:"Ensino Médio: Instituto de Telecomunicações - ITEL",
+
 universidade:"Ensino Superior: Instituto Superior Politécnico Kalandula de Angola - ISPEKA",
+
+
 funcao:"Programador Full Stack | Técnico de Informática",
 
 
 
 biografia:`
 
-Augusto Firmino Correia, Concluiu o Instituto de Telecomunicações - ITEL na área de formação média Técnica como Técnico de Informática,
-dando continuidade na sua formação na Universidade: Instituto Superior Politécnico Kalandula de Angola - ISPEKA, frequentando o 2º Ano no Curso de Engenharia Informática. Dedicado ao desenvolvimento de soluções
-tecnológicas modernas, inovadoras e eficientes.
+Augusto Firmino Correia, concluiu o Instituto de Telecomunicações - ITEL na área de formação média técnica como Técnico de Informática.
 
-Atua na criação de aplicações web completas, sistemas digitais, plataformas
-online e soluções personalizadas, combinando programação, infraestrutura
-informática e ferramentas tecnológicas.
+Atualmente frequenta o 2º Ano do Curso de Engenharia Informática no Instituto Superior Politécnico Kalandula de Angola - ISPEKA.
 
-Possui experiência no desenvolvimento frontend com React.js, backend com
-Node.js, criação de APIs, gestão de bases de dados MySQL e desenvolvimento
-de interfaces profissionais utilizando Tailwind CSS.
+Dedicado ao desenvolvimento de soluções tecnológicas modernas, inovadoras e eficientes.
 
-Também possui conhecimentos na integração de Inteligência Artificial (IA),
-Marketing Digital, Excel Avançado e Informática na Óptica do Utilizador.
+Atua na criação de aplicações web completas, sistemas digitais, plataformas online e soluções personalizadas.
 
-Como profissional de tecnologia, procura transformar ideias em soluções
-digitais funcionais, seguras e preparadas para os desafios do mundo moderno.
+Possui experiência em React.js, Node.js, APIs, MySQL, Tailwind CSS, Inteligência Artificial, Marketing Digital, Excel Avançado e Informática na Óptica do Utilizador.
 
 `,
 
 
 
+
 projetos:[
 
-"RCTV Stream - Plataforma de transmissão online",
 
-"Sistema de Gestão de Directores",
+{
 
-"Tradutor Português - Kimbundu",
+nome:"RCTV Stream - Plataforma de transmissão online",
 
-"Sistemas Web Empresariais",
+descricao:`
 
-"Aplicações digitais personalizadas"
+Plataforma de transmissão de conteúdos em directo desenvolvida para permitir
+a distribuição de canais online.
+
+O sistema possui integração com streaming, reprodução de vídeo, gestão de canais,
+interface responsiva e experiência semelhante às plataformas profissionais de TV online.
+
+`,
+
+tecnologias:[
+"React.js",
+"Node.js",
+"Socket.io",
+"Tailwind CSS"
+]
+
+},
+
+
+
+{
+
+nome:"Sistema de Gestão de Directores",
+
+descricao:`
+
+Sistema desenvolvido para cadastro e gestão completa de directores.
+
+Permite armazenar informações pessoais, biografias, experiências profissionais,
+qualificações, imagens e depoimentos.
+
+Possui integração entre frontend React e backend Node.js com base de dados MySQL.
+
+`,
+
+tecnologias:[
+"React.js",
+"Node.js",
+"MySQL",
+"Cloudinary"
+]
+
+},
+
+
+
+
+{
+
+nome:"Tradutor Português - Kimbundu",
+
+descricao:`
+
+Projeto de inteligência linguística criado para tradução entre português e kimbundu.
+
+O sistema trabalha com dicionário personalizado, regras gramaticais,
+processamento de frases e possibilidade de integração com reconhecimento de voz.
+
+`,
+
+tecnologias:[
+"React",
+"Node.js",
+"MySQL",
+"IA"
+]
+
+},
+
+
+
+
+{
+
+nome:"Sistemas Web Empresariais",
+
+descricao:`
+
+Desenvolvimento de sistemas personalizados para empresas,
+incluindo dashboards administrativos, gestão de dados,
+autenticação de utilizadores e APIs.
+
+`,
+
+tecnologias:[
+"React",
+"Express",
+"MySQL"
+]
+
+},
+
+
+
+
+{
+
+nome:"Aplicações Digitais Personalizadas",
+
+descricao:`
+
+Criação de soluções digitais adaptadas às necessidades dos clientes,
+desde websites institucionais até plataformas completas.
+
+`,
+
+tecnologias:[
+"JavaScript",
+"React",
+"Node.js"
+]
+
+}
+
+
 
 ],
+
+
 
 
 
 tecnologias:[
 
 "React.js",
-
 "Node.js",
-
 "MySQL",
-
 "Tailwind CSS",
-
 "JavaScript",
-
 "Socket.io",
-
 "Cloudinary",
-
 "Inteligência Artificial",
-
 "Marketing Digital"
 
 ],
@@ -128,21 +237,17 @@ mx-auto
 
 
 
-{/* VOLTAR */}
-
 <Link
 
 to="/"
 
 className="
-inline-flex
+flex
 items-center
 gap-3
 mb-10
 text-red-600
-font-semibold
-hover:text-red-800
-transition
+font-bold
 "
 
 >
@@ -158,9 +263,6 @@ Voltar
 
 
 
-{/* CABEÇALHO */}
-
-
 <div className="
 bg-gray-50
 rounded-3xl
@@ -171,10 +273,7 @@ flex-col
 md:flex-row
 items-center
 gap-8
-border
-border-gray-200
 ">
-
 
 
 <img
@@ -190,22 +289,17 @@ rounded-full
 object-cover
 border-8
 border-red-600
-shadow-xl
 "
 
 />
 
 
 
-
-
 <div>
-
 
 <h1 className="
 text-4xl
 font-bold
-mb-3
 ">
 
 {desenvolvedor.nome}
@@ -213,11 +307,10 @@ mb-3
 </h1>
 
 
-
 <h2 className="
-text-xl
 text-red-600
 font-semibold
+mt-2
 ">
 
 {desenvolvedor.funcao}
@@ -225,42 +318,21 @@ font-semibold
 </h2>
 
 
-
-<p className="
-text-gray-600
-mt-3
-">
+<p className="mt-3 text-gray-600">
 
 {desenvolvedor.instituicao}
 
-
 </p>
 
-<p className="
-text-gray-600
-mt-3
-">
+
+<p className="text-gray-600">
 
 {desenvolvedor.universidade}
 
-
-</p>
-
-
-<p className="
-mt-5
-text-gray-700
-leading-relaxed
-">
-
-Desenvolvedor focado em criar soluções digitais,
-sistemas web modernos e tecnologias inovadoras.
-
 </p>
 
 
 </div>
-
 
 
 </div>
@@ -269,35 +341,22 @@ sistemas web modernos e tecnologias inovadoras.
 
 
 
-
-
-{/* BIOGRAFIA */}
 
 
 <section className="mt-10">
 
 
-<h2 className="
-text-2xl
-font-bold
-mb-4
-flex
-items-center
-gap-3
-">
-
-<FaCode className="text-red-600"/>
+<h2 className="text-2xl font-bold mb-4">
 
 Sobre mim
 
 </h2>
 
 
-
 <p className="
-text-gray-700
-leading-relaxed
 whitespace-pre-line
+leading-relaxed
+text-gray-700
 ">
 
 {desenvolvedor.biografia}
@@ -315,120 +374,6 @@ whitespace-pre-line
 
 
 
-{/* COMPETENCIAS */}
-
-
-<section className="mt-10">
-
-
-<h2 className="
-text-2xl
-font-bold
-mb-5
-">
-
-Competências
-
-</h2>
-
-
-
-<div className="
-grid
-md:grid-cols-3
-gap-5
-">
-
-
-<div className="
-p-5
-rounded-xl
-bg-gray-100
-">
-
-<FaLaptopCode className="text-red-600 text-3xl mb-3"/>
-
-<h3 className="font-bold">
-
-Desenvolvimento Web
-
-</h3>
-
-<p className="text-gray-600">
-
-React, Node.js, APIs e sistemas completos.
-
-</p>
-
-</div>
-
-
-
-
-<div className="
-p-5
-rounded-xl
-bg-gray-100
-">
-
-<FaRobot className="text-red-600 text-3xl mb-3"/>
-
-<h3 className="font-bold">
-
-Inteligência Artificial
-
-</h3>
-
-<p className="text-gray-600">
-
-Aplicação de IA em soluções digitais.
-
-</p>
-
-</div>
-
-
-
-
-
-<div className="
-p-5
-rounded-xl
-bg-gray-100
-">
-
-<FaBullhorn className="text-red-600 text-3xl mb-3"/>
-
-<h3 className="font-bold">
-
-Marketing Digital
-
-</h3>
-
-<p className="text-gray-600">
-
-Estratégias digitais e presença online.
-
-</p>
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-{/* PROJETOS */}
-
 
 <section className="mt-10">
 
@@ -445,10 +390,11 @@ Projetos Realizados
 
 
 
+
 <div className="
 grid
 md:grid-cols-2
-gap-4
+gap-5
 ">
 
 
@@ -457,23 +403,48 @@ gap-4
 desenvolvedor.projetos.map((projeto,index)=>(
 
 
-<div
+<button
 
 key={index}
 
+onClick={()=>setProjetoSelecionado(projeto)}
+
 className="
+text-left
 bg-gray-100
-p-4
+p-5
 rounded-xl
 border-l-4
 border-red-600
+hover:bg-red-50
+transition
 "
 
 >
 
-{projeto}
 
-</div>
+<h3 className="
+font-bold
+text-lg
+">
+
+{projeto.nome}
+
+</h3>
+
+
+<p className="
+text-sm
+text-gray-500
+mt-2
+">
+
+Clique para ver detalhes
+
+</p>
+
+
+</button>
 
 
 ))
@@ -494,9 +465,6 @@ border-red-600
 
 
 
-{/* TECNOLOGIAS */}
-
-
 <section className="mt-10">
 
 
@@ -509,7 +477,6 @@ mb-5
 Tecnologias
 
 </h2>
-
 
 
 
@@ -530,12 +497,11 @@ desenvolvedor.tecnologias.map((tec,index)=>(
 key={index}
 
 className="
+bg-red-100
+text-red-700
 px-4
 py-2
 rounded-full
-bg-red-100
-text-red-700
-font-medium
 "
 
 >
@@ -563,9 +529,6 @@ font-medium
 
 
 
-{/* CONTACTO */}
-
-
 
 <section className="
 mt-10
@@ -576,11 +539,7 @@ p-8
 ">
 
 
-<h2 className="
-text-2xl
-font-bold
-mb-5
-">
+<h2 className="text-2xl font-bold mb-5">
 
 Contactos para Projetos
 
@@ -588,17 +547,7 @@ Contactos para Projetos
 
 
 
-
-<div className="
-space-y-4
-">
-
-
-<p className="
-flex
-items-center
-gap-3
-">
+<p className="flex gap-3 items-center">
 
 <FaEnvelope className="text-red-500"/>
 
@@ -607,13 +556,7 @@ gap-3
 </p>
 
 
-
-
-<p className="
-flex
-items-center
-gap-3
-">
+<p className="flex gap-3 items-center mt-3">
 
 <FaPhone className="text-red-500"/>
 
@@ -623,17 +566,11 @@ gap-3
 
 
 
-</div>
-
-
-
-
-
 <div className="
 flex
 gap-6
-mt-6
 text-3xl
+mt-6
 ">
 
 
@@ -654,21 +591,162 @@ text-3xl
 </div>
 
 
-
 </section>
 
 
 
 
-</div>
+
+
+
+
+{/* MODAL DOS PROJETOS */}
+
+
+{
+
+projetoSelecionado && (
+
+
+<div className="
+fixed
+inset-0
+bg-black/60
+flex
+items-center
+justify-center
+p-5
+z-50
+">
+
+
+<div className="
+bg-white
+max-w-xl
+w-full
+rounded-2xl
+p-8
+relative
+">
+
+
+<button
+
+onClick={()=>setProjetoSelecionado(null)}
+
+className="
+absolute
+right-5
+top-5
+text-red-600
+text-xl
+"
+
+>
+
+<FaTimes/>
+
+</button>
+
+
+
+
+<h2 className="
+text-2xl
+font-bold
+mb-4
+">
+
+{projetoSelecionado.nome}
+
+</h2>
+
+
+
+<p className="
+text-gray-700
+whitespace-pre-line
+leading-relaxed
+">
+
+{projetoSelecionado.descricao}
+
+</p>
+
+
+
+<h3 className="
+font-bold
+mt-5
+">
+
+Tecnologias usadas:
+
+</h3>
+
+
+<div className="
+flex
+flex-wrap
+gap-2
+mt-3
+">
+
+
+{
+
+projetoSelecionado.tecnologias.map((tec,index)=>(
+
+<span
+
+key={index}
+
+className="
+bg-red-100
+text-red-700
+px-3
+py-1
+rounded-full
+"
+
+>
+
+{tec}
+
+</span>
+
+
+))
+
+}
 
 
 </div>
 
+
+
+</div>
+
+
+</div>
 
 
 )
 
+
+}
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+)
 
 }
 
