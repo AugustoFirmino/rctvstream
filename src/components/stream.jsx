@@ -568,62 +568,42 @@ Aguardando conexão...
 
 {/* VIDEO OCUPA TODA DIV */}
 
-<iframe
+<div className="relative w-full aspect-video overflow-hidden bg-black">
 
-id="transmissao"
+  <iframe
+    id="transmissao"
 
-key={canalAtual.url}
+    key={canalAtual.url}
 
-src={canalAtual.url}
+    src={canalAtual.url}
 
-title={canalAtual.nome}
+    title={canalAtual.nome}
 
+    className="
+      absolute
+      top-0
+      left-0
+      w-full
+      h-full
+      border-0
+    "
 
-className="
+    scrolling="no"
 
-absolute
+    allow="
+      autoplay;
+      fullscreen;
+      encrypted-media;
+      picture-in-picture
+    "
 
-top-1/2
+    allowFullScreen
 
-left-1/2
+    onLoad={() => setLoading(false)}
 
+  />
 
-w-[140%]
-
-h-[140%]
-
-
--translate-x-1/2
-
--translate-y-1/2
-
-
-border-0
-
-"
-
-
-scrolling="no"
-
-
-allow="
-autoplay;
-fullscreen;
-encrypted-media;
-picture-in-picture
-"
-
-
-allowFullScreen
-
-
-onLoad={()=>setLoading(false)}
-
-
-/>
-
-
-
+</div>
 
 </div>
 
