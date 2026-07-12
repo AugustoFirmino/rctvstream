@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 
 import logo from "../assets/rctvstream-branco.png";
+import { Link } from "react-router-dom";
 
 
 function Footer(){
@@ -424,9 +425,9 @@ transition
 "
 
 >
-
+<Link to="/rctvstream/desenvolvedor" className="flex items-center gap-3">
 Conheça o Desenvolvedor da RCTV Stream
-
+</Link>
 <FaArrowRight/>
 
 </button>

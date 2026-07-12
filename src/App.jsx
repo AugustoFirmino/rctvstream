@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./paginas/Home";
-import Direcao from "./paginas/Direcao";
+import Desenvolvidor from "./paginas/Desenvolvidor";
 
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
 
         <Route path="/" element={<Home />} />
 
-        <Route path="/direcao" element={<Direcao />} />
+        <Route path="/rctvstream/desenvolvedor" element={<Desenvolvidor />} />
 
 
        
