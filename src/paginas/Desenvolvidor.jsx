@@ -97,9 +97,9 @@ tecnologias:[
 
 
 
-email:"augusto@email.com",
+email:"gugufirmino1@email.com",
 
-telefone:"+244 900 000 000"
+telefone:"+244 942 081 324"
 
 
 };
@@ -637,14 +637,14 @@ text-3xl
 ">
 
 
-<a href="#">
+<a href="https://github.com/AugustoFirmino">
 
 <FaGithub/>
 
 </a>
 
 
-<a href="#">
+<a href="https://www.linkedin.com/in/augusto-firmino-correia-a71287270/">
 
 <FaLinkedin/>
 
