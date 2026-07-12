@@ -580,9 +580,9 @@ className="
 
 absolute
 
-top-0
+top-1/2
 
-left-0
+left-1/2
 
 
 w-[123%]
@@ -590,9 +590,9 @@ w-[123%]
 h-[120%]
 
 
--translate-x-[10%]
+-translate-x-1/2
 
--translate-y-[10%]
+-translate-y-1/2
 
 
 border-0
