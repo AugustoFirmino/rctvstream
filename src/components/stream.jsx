@@ -689,6 +689,7 @@ Aguardando conexão...
 
 <iframe
 
+id="transmissao"
 key={canalAtual.url}
 
 src={canalAtual.url}
