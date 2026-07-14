@@ -13,7 +13,10 @@ export default function Stream() {
 
 
 const canais = [
-
+{
+nome:"RCTV STREAM",
+url:"https://til-waiver-proudly-brave.trycloudflare.com/embed/1"
+},
 {
 nome:"TPA 1",
 url:"https://til-waiver-proudly-brave.trycloudflare.com/embed/1"
@@ -43,10 +46,7 @@ url:"https://til-waiver-proudly-brave.trycloudflare.com/embed/5"
 nome:"TV Parlamento",
 url:"https://www.youtube.com/embed/CIpNJ-bMGsI"
 },
-{
-nome:"RCTV STREAM",
-url:"https://til-waiver-proudly-brave.trycloudflare.com/embed/1"
-},
+
 
 ];
 
@@ -74,13 +74,14 @@ navigator.onLine
 
 
 const [espectadores,setEspectadores] = useState({
+  "RCTV STREAM":0,
   "TPA 1":0,
   "TPA 2":0,
   "TPA Notícias":0,
   "TV Zimbo":0,
   "TV Girasol":0,
   "TV Parlamento":0,
-  "RCTV STREAM":0
+
 });
 
 
