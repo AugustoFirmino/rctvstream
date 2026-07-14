@@ -93,7 +93,7 @@ function Estatisticas() {
 
         <Card
           icon={<FaTv />}
-          number="6"
+          number="7"
           title="Canais Online"
           description="Canais disponíveis em transmissão"
         />
