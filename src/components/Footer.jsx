@@ -285,7 +285,7 @@ className="text-red-500"
 
 <span>
 
-contacto@rctvstream.com
+rctvangola@gmail.com
 
 </span>
 
