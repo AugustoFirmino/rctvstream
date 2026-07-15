@@ -13,7 +13,10 @@ export default function Stream() {
 
 
 const canais = [
-
+{
+nome:"RCTV STREAM",
+url:"https://mines-thorough-ago-andreas.trycloudflare.com/embed/1"
+},
 {
 nome:"TPA 1",
 url:"https://mines-thorough-ago-andreas.trycloudflare.com/embed/1"
@@ -28,6 +31,22 @@ url:"https://mines-thorough-ago-andreas.trycloudflare.com/embed/1"
 nome:"TPA Notícias",
 url:"https://mines-thorough-ago-andreas.trycloudflare.com/embed/1"
 },
+
+{
+nome:"TV Zimbo",
+url:"https://mines-thorough-ago-andreas.trycloudflare.com/embed/1"
+},
+
+{
+nome:"TV Girasol",
+url:"https://mines-thorough-ago-andreas.trycloudflare.com/embed/1"
+},
+
+{
+nome:"TV Parlamento",
+url:"https://www.youtube.com/embed/CIpNJ-bMGsI"
+},
+
 
 ];
 
