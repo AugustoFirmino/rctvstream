@@ -34,13 +34,11 @@ const io = new Server(server, {
 // ===============================
 
 const espectadores = {
-  "RCTV STREAM": 0,
+
   "TPA 1": 0,
   "TPA 2": 0,
   "TPA Notícias": 0,
-  "TV Zimbo": 0,
-  "TV Girasol": 0,
-  "TV Parlamento": 0,
+ 
   
 };
 
